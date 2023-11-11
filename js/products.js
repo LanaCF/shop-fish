@@ -1,3 +1,5 @@
+const cart = [];
+
 const products = [
     {
         id: 1,
