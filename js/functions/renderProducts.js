@@ -1,4 +1,4 @@
-function renderProducts(parentElSelector, dataArr) {
+function renderProducts(parentElSelector ,dataArr) {
     const parentEl = doc.querySelector(parentElSelector);
     if (!parentEl) {
       console.warn(`el of selector: ${parentElSelector}, not found !!!`)
@@ -9,6 +9,11 @@ function renderProducts(parentElSelector, dataArr) {
       renderProduct(parentElSelector, product);
     });
 }
+// Ця функція очікує два аргументи - селектор parentElSelector та масив даних про продукти dataArr.
+// перевіряє, чи чи був знайдений елемент з вказаним селектором (parentEl). 
+// Якщо елемент не був знайдений, вона виводить повідомлення в консоль (console.warn), 
+// що елемент не знайдено, і завершує виконання функції за допомогою return.
+// Якщо елемент знайдено, то виконується інша функція (нижче).
   
 function renderProduct(parentElSelector, dataObj) {
     const parentEl = doc.querySelector(parentElSelector);
@@ -17,6 +22,9 @@ function renderProduct(parentElSelector, dataObj) {
     return;
     }
 }
+// Ця функція очікує два аргументи - селектор parentElSelector та об'єкт даних 
+// про конкретний продукт dataObj.
+
 
 function renderProduct(parentElSelector, dataObj) {
     const parentEl = doc.querySelector(parentElSelector);
@@ -27,7 +35,6 @@ function renderProduct(parentElSelector, dataObj) {
 
     const product = doc.createElement('div');
     const thumb = doc.createElement('div');
-    const img = doc.createElement('img');
     const info = doc.createElement('div');
     const title = doc.createElement('h4');
     const text = doc.createElement('p');
@@ -59,17 +66,32 @@ function renderProduct(parentElSelector, dataObj) {
 
     btnAddToCart.onclick = function() {
         cart.push(dataObj.id);
-        updateCountItemsInCart();
+        updateCountItemsInCart(); // кількість доданих продуктів у картці
+        
+        // addProducts(cart, products);
     }
     
-    thumb.append(img);
     priceBlock.append(price, btnAddToCart);
     info.append(title, text, priceBlock);
     product.append(thumb, info);
     parentEl.append(product);
 }
+// додає елементи в DOM
 
 
+// function addProducts(selectedProductIds, allProducts) {
+//     selectedProductIds.forEach(function(productId) {
+//         const selectedProduct = allProducts.find(function(product) {
+//             return product.id === productId;
+//         });
+        
+//         if(selectedProduct) {
+//             arrNew.push(selectedProduct);
+//         }
+//     });
+
+//     return arrNew;
+// }
 
 
 

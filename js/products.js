@@ -1,4 +1,5 @@
-const cart = [];
+const cart = []; // для нового масиву
+const arrNew = [];
 
 const products = [
     {
