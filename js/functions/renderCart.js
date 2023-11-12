@@ -7,6 +7,7 @@ cartEl.onclick = function() {
   
 function renderCart() {
   const formatCart = formatCartData(cart); // беремо новий масив без дублікатів
+  let sumTotalAddProd = 0;
 
   formatCart.forEach(function(cartItem) {
     const block = doc.createElement('div');
@@ -32,10 +33,11 @@ function renderCart() {
     title.innerHTML = cartItem.title;
 
     quantity.className = `${mainClass}-add-title`;
-    quantity.innerHTML = ''; /////////////////////////////////////
+    quantity.innerHTML = quantityAddProducts(cart, cartItem.id);
 
     sum.className = `${mainClass}-add-title`;
-    sum.innerHTML = ''; ///////////////////////////////////// quantity * formatCart.price
+    sum.innerHTML = quantityAddProducts(cart, cartItem.id) * cartItem.price + money;
+    sumTotalAddProd = sumTotalAddProd + quantityAddProducts(cart, cartItem.id) * cartItem.price;
 
     imgDel.className = `${mainClass}-add-box`;
     imgDel.innerHTML = `<img src="img/close.png" alt="" class="close-img">`;
@@ -48,6 +50,9 @@ function renderCart() {
 
     imgDel.onclick = function() {
       block.style.display = 'none';
+      cartItemsCountEl.innerHTML = cart.length - quantityAddProducts(cart, cartItem.id);
+      sumTotalAddProd = sumTotalAddProd - quantityAddProducts(cart, cartItem.id) * cartItem.price;
+      totalSum.innerHTML = sumTotalAddProd;
     }
   });
   
@@ -59,13 +64,43 @@ function renderCart() {
   totalText.className = `total-text`;
   totalText.innerHTML = 'До сплати:';
   totalSum.className = `total-sum`;
-  totalSum.innerHTML = ''; ///////////////////////////////////// totalSum++
+  totalSum.innerHTML = sumTotalAddProd;
 
   addBlockProducts.append(totalBox);
   totalBox.append(totalText, totalSum);
 
   console.log(formatCart);
 }
+
+function quantityAddProducts(arr, id) { // arr = cart / id = cartItem.id
+  let sumAdd = 0;
+
+  arr.forEach(function(item) {
+    if (item === id) {
+      sumAdd += 1;
+    }
+  });
+
+  return sumAdd;
+}
+
+// function quantityAddProducts(arr) { // arr = cart
+  
+
+
+// }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 // display.onclick = function() {
@@ -75,6 +110,24 @@ function renderCart() {
 imgCloseBtn.onclick = function() {
   display.style.display = 'none';
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   
   /*

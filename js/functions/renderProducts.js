@@ -1,12 +1,12 @@
 function renderProducts(parentElSelector ,dataArr) {
     const parentEl = doc.querySelector(parentElSelector);
     if (!parentEl) {
-      console.warn(`el of selector: ${parentElSelector}, not found !!!`)
-      return;
+        console.warn(`el of selector: ${parentElSelector}, not found !!!`)
+        return;
     }
   
     dataArr.forEach(function(product) {
-      renderProduct(parentElSelector, product);
+        renderProduct(parentElSelector, product);
     });
 }
 // Ця функція очікує два аргументи - селектор parentElSelector та масив даних про продукти dataArr.
@@ -18,8 +18,8 @@ function renderProducts(parentElSelector ,dataArr) {
 function renderProduct(parentElSelector, dataObj) {
     const parentEl = doc.querySelector(parentElSelector);
     if (!parentEl) {
-    console.warn(`el of selector: ${parentElSelector}, not found !!!`)
-    return;
+        console.warn(`el of selector: ${parentElSelector}, not found !!!`)
+        return;
     }
 }
 // Ця функція очікує два аргументи - селектор parentElSelector та об'єкт даних 
@@ -59,15 +59,15 @@ function renderProduct(parentElSelector, dataObj) {
     priceBlock.className = `${mainClass}__price-block`;
 
     price.className = `${mainClass}__price`;
-    price.innerHTML = dataObj.price;
+    price.innerHTML = dataObj.price + money;
 
     btnAddToCart.className = `${mainClass}__add-cart`;
     btnAddToCart.innerHTML = 'Buy';
 
     btnAddToCart.onclick = function() {
         cart.push(dataObj.id);
-        updateCountItemsInCart(); // кількість доданих продуктів у картці
-        
+        updateCountItemsInCart(); // виводе кількість доданих продуктів у картці
+        // idClick = idClick + 1;
         // addProducts(cart, products);
     }
     
@@ -93,7 +93,7 @@ function renderProduct(parentElSelector, dataObj) {
 //     return arrNew;
 // }
 
-
+console.log(idClick);
 
 
 

@@ -12,3 +12,5 @@ const mainClass = 'product';
 const display = doc.querySelector('.background-for-window'); // затемнення фону для картки продуктів
 const addBlockProducts = doc.querySelector('.window-order'); // вікно зі списком вибраних товарів
 const imgCloseBtn = doc.querySelector('.close-img-bg');
+const money = ' грн.';
+let idClick = 0;
